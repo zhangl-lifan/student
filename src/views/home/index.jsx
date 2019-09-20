@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import styles from './index.scss';
 import Header from '../../components/header';
 import { classList } from '../../services/list';
-
 import echarts from 'echarts';
 import 'echarts/lib/chart/line';
 import ReactEcharts from 'echarts-for-react';
+import styles from './index.scss';
 
 class Home extends Component {
   state = {
@@ -24,7 +23,8 @@ class Home extends Component {
         create_time: '2019-08-23T07:12:12.000Z',
         tid: '9b1e295c-6ad1-4611-a546-47b14a6b4f69'
       }
-    ]
+    ],
+    vility:false
   };
 
   addClass() {
@@ -35,6 +35,15 @@ class Home extends Component {
     let result = await classList();
     console.log(result);
   };
+
+  // 添加成绩
+  addAchieve(){
+     console.log(12345)
+     console.log(this.state.vility)
+     this.setState({
+        vility:true
+     })
+  }
 
   getOption = () => {
     let option = {
@@ -55,7 +64,7 @@ class Home extends Component {
       },
       toolbox: {
         show: true,
-        x: '1050px',
+        x: '1270px',
         feature: {
           dataZoom: {
             yAxisIndex: 'none'
@@ -109,7 +118,7 @@ class Home extends Component {
           itemStyle: {
             normal: {
               color:'red',   //  给折线添加颜色
-
+              type:'dash'
             }
           }
         },
@@ -129,7 +138,7 @@ class Home extends Component {
   };
 
   render() {
-    let { lists } = this.state;
+    let { lists,vility } = this.state;
 
     return (
       <div className={styles.homePage}>
@@ -184,8 +193,23 @@ class Home extends Component {
           <ReactEcharts option={this.getOption()} style={{ height: '400px',marginTop:"22px" }} />
         </div>
         <div className={styles.jurpBox}>
-          <div className={styles.contentText}></div>
+          <div className={styles.contentText}>
+              <div className={styles.contentLeft}>
+                  <span onClick={this.addAchieve.bind(this)}>添加成绩+</span>
+                  <span>添加分析和解决方案+</span>
+              </div>
+              <div className={styles.contentRight}>
+                  <span>查看和编辑该生所有的成绩</span>
+              </div>
+          </div>
         </div>
+        {
+           vility && <div className={styles.delog}>
+               <div className={styles.delogContent}>
+                 
+               </div>
+           </div>
+        }
       </div>
     );
   }
