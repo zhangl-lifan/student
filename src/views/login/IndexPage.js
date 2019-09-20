@@ -9,7 +9,6 @@ import React from 'react';
 import {getlogin,login} from '../../services/example'
 import Header from '../../components/header/header'
 import style from './IndexPage.css';
-import {setCookie,getCookie} from '../../utils/jscook'
 
 class IndexPage extends React.Component {
   state = { 
