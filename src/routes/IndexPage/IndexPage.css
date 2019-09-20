@@ -1,0 +1,80 @@
+*{
+  margin:0;
+  padding:0;
+  list-style: none;;
+}
+body,html{
+  width:100%;
+  height:100%;
+}
+#root{
+  width:100%;
+  height:100%;
+}
+.loginbigbox{
+  width:100%;
+  height:100%;
+ 
+}
+.title{
+  text-align: center;
+  line-height:50px;
+}
+.cheackin{
+margin:0 auto;
+  width:200px;
+  height:50px;
+  display:flex;
+}
+.cheackin span{
+  flex:1;
+  text-align:center;
+  border-bottom:solid 1px #ccc;
+  line-height:50px;
+}
+.cheackin .active{
+  color:red;
+  border-color:red;
+}
+.user{
+   width:200px;
+   height:40px;
+   margin:10px auto;
+   border:solid 1px #ccc;
+}
+.user>input,.pwd>input{
+  border:none;
+  width:180px;
+  height:40px;
+  line-height:40px;
+  outline:0;
+  padding-left:20px;
+}
+.pwd{
+  width:200px;
+  height:40px;
+  margin:10px auto;
+  border:solid 1px #ccc;
+}
+.login{
+  width:200px;
+  height:40px;
+  margin:10px auto;
+ background:skyblue;
+ text-align:center;
+ line-height:40px;
+}
+.check{
+  width:200px;
+  margin:10px auto;
+}
+.check>input{
+  margin-right:10px;
+}
+.pwdalt{
+  width:300px;
+  text-align:center;
+  font-size:12px;
+  line-height:20px;
+  color:red;
+}

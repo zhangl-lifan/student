@@ -1,30 +1,29 @@
-import fetch from 'dva/fetch';
-
-function parseJSON(response) {
-  return response.json();
-}
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-09-19 14:49:19
+ * @LastEditTime: 2019-09-19 21:32:21
+ * @LastEditors: Please set LastEditors
  */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => ({ data }))
-    .catch(err => ({ err }));
-}
+import axios from 'axios';
+
+const instance = axios.create({
+    baseURL: "/api",
+    timeout: 1000,
+})
+
+// 请求拦截器
+instance.interceptors.request.use((config) => {
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+})
+
+// 响应拦截器
+instance.interceptors.response.use((Response) => {
+    return Response.data;
+}, (error) => {
+    return Promise.reject(error);
+})
+
+export default instance;
