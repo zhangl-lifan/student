@@ -1,13 +1,11 @@
-<<<<<<< HEAD
 /*
  * @Description: In User Settings Edit
  * @Author: your name
- * @Date: 2019-09-19 14:49:19
- * @LastEditTime: 2019-09-19 21:32:21
- * @LastEditors: Please set LastEditors
+ * @Date: 2019-09-20 15:04:13
+ * @LastEditTime: 2019-09-20 15:04:13
+ * @LastEditors: your name
  */
-=======
->>>>>>> 3d8f5af7cd72c24af290aa91ff491d47df8515f1
+
 import axios from 'axios';
 
 const instance = axios.create({

@@ -2,13 +2,12 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-19 14:49:19
- * @LastEditTime: 2019-09-20 15:07:25
+ * @LastEditTime: 2019-09-20 15:12:49
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
-import { Router, Route, Switch, Redirect } from 'dva/router';
+import { Router, Route, Switch } from 'dva/router';
 import IndexPage from './routes/IndexPage/IndexPage';
-import Login from '../views/login';
 import Home from '../views/home';
 
 function RouterConfig({ history }) {
