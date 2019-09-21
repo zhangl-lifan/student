@@ -2,13 +2,13 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-19 14:49:19
- * @LastEditTime: 2019-09-20 14:46:41
+ * @LastEditTime: 2019-09-21 08:40:04
  * @LastEditors: Please set LastEditors
  */
 import React from 'react';
 import {getlogin,login} from '../../services/example'
 import Header from '../../components/header/header'
-import style from './IndexPage.css';
+import style from './index.css';
 
 class IndexPage extends React.Component {
   state = { 
@@ -17,14 +17,23 @@ class IndexPage extends React.Component {
     pwdalt:'',
     userval:'',
     pwdval:'',
-    check:true
+    check:true,
+    flagpassword:true,
+    flaguser:true
   }
   render() {
-
-    const {ind,useralt,pwdalt,check}=this.state;
+  
+    const {ind,useralt,pwdalt,check,flagpassword,flaguser}=this.state;
     let userval=this.state.userval,pwdval=this.state.pwdval;
-   userval=localStorage.getItem('username') || userval;
-    pwdval=localStorage.getItem('pwssword') || pwdval;
+    
+    if(flagpassword){
+      pwdval=pwdval || localStorage.getItem('pwssword');
+    }
+    if(flaguser){
+      userval=userval || localStorage.getItem('username');
+    }
+   
+    
     // this.setState({userval,pwdval});
     return (
       <div className={style.loginbigbox}>
@@ -37,11 +46,11 @@ class IndexPage extends React.Component {
           }}>登入</span><span className={ind===2?style.active:''} onClick={()=>{
             this.setState({ind:2})
           }}>注册</span></p>
+          
           <p className={style.user}><input type='text' className='username' placeholder='请输入您的用户名' value={userval} onChange={(e)=>{this.userchange(e)}} onBlur={()=>{this.checkuser()}}></input></p>
-          <p className={useralt.length?style.pwdalt:''} style={{opacity:useralt.length?1:0}}>{useralt}</p>
-         
+          <p className={useralt.trim().length>1?style.pwdalt:style.none}>{useralt}</p>
           <p className={style.pwd}><input type='text' className='password' placeholder='请输入您的密码' onChange={(e)=>{this.pwdchange(e)}} value={pwdval} onBlur={()=>{this.checkpwd()}}></input></p>
-          <p className={pwdalt.length?style.pwdalt:''} style={{opacity:pwdalt.length?1:0}}>{pwdalt}</p>
+          <p className={pwdalt.trim().length>1?style.pwdalt:style.none}>{pwdalt}</p>
           <p className={style.check}><input type='checkbox' checked={check} onChange={()=>{
             this.changebox()
           }}></input>两周内免登陆</p>
@@ -55,9 +64,10 @@ class IndexPage extends React.Component {
   }
   checkpwd(){
     
-   
-    let {pwdval} =this.state;
-    pwdval=localStorage.getItem('pwssword') || pwdval;
+   let {pwdval,flagpassword} =this.state;
+    if(flagpassword){
+      pwdval=pwdval || localStorage.getItem('pwssword');
+    }
     if(!/[a-zA-Z0-9_]{6,10}/.test(pwdval)){
       this.setState({pwdalt:'密码由6-10位字母或者数字组成'})
     }
@@ -66,8 +76,10 @@ class IndexPage extends React.Component {
     }
   }
   checkuser(){
-    let {userval} =this.state;
-    userval=localStorage.getItem('username') || userval;
+    let {userval,flaguser} =this.state;
+    if(flaguser){
+      userval=userval || localStorage.getItem('username');
+    }
     if(!/[a-zA-Z0-9_]{6,10}/.test(userval)){
       this.setState({useralt:'用户名由6-10位字母或者数字组成'})
     }
@@ -78,14 +90,18 @@ class IndexPage extends React.Component {
  
   
   login(){
-    let {userval,pwdval,ind,check} =this.state;
-    userval=localStorage.getItem('username') || userval;
-    pwdval=localStorage.getItem('pwssword') || pwdval;
+    let {userval,pwdval,ind,check,flaguser,flagpassword} =this.state;
+    if(flaguser){
+      userval=userval || localStorage.getItem('username');
+    }
+    if(flagpassword){
+      pwdval=pwdval || localStorage.getItem('pwssword');
+    }
     this.checkuser()
     this.checkpwd()
     if(/[a-zA-Z0-9_]{6,10}/.test(userval) && /[a-zA-Z0-9_]{5,10}/.test(pwdval) && ind===1){
-      
-       login({'username':userval,'password':pwdval}).then(res=>{
+         this.setState({useralt:'',pwdalt:''})
+        login({'username':userval,'password':pwdval}).then(res=>{
          if(res.code===1){
            console.log('登陆成功',check,res);
           if(check){
@@ -117,10 +133,15 @@ class IndexPage extends React.Component {
   }
 
   pwdchange(e){
+    if(e.target.value.length===0){
+      this.setState({flagpassword:false})
+    }
     this.setState({pwdval:e.target.value})
-     
   }
   userchange(e){
+    if(e.target.value.length===0){
+      this.setState({flaguser:false})
+    }
     this.setState({userval:e.target.value})
     
   }
