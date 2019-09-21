@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import {getlogin,login} from '../../services/example'
-import Header from '../../components/header/header'
+import Header from '../../components/header'
 import style from './index.css';
 
 class IndexPage extends React.Component {
@@ -38,7 +38,7 @@ class IndexPage extends React.Component {
     return (
       <div className={style.loginbigbox}>
        {/* <h3>重点学生日周考成绩录入管理系统</h3> */}
-       <Header title={'重点学生日周考成绩录入管理系统'} background='skyblue'></Header>
+       <Header text={'重点学生日周考成绩录入管理系统'} background='skyblue'></Header>
        <div className={style.loginbox} style={{width:'300px',margin:'100px auto'}}>
           <h2 className={style.title}>网站工程</h2>
           <p className={style.cheackin}><span className={ind===1?style.active:''} onClick={()=>{

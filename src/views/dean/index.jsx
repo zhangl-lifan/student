@@ -225,21 +225,6 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <div className={styles.listNav}>
-          <div className={styles.listText}>
-            <p>
-              <span>添加学生+:</span>
-            </p>
-            <p>
-              <input type="text" placeholder="请输入姓名" />
-              <input type="text" placeholder="末位次数" />
-              <input type="text" placeholder="结对子，帮扶对象" />
-            </p>
-            <p>
-              <button>添加</button>
-            </p>
-          </div>
-        </div>
         <div className={styles.echartsBox}>
           <ReactEcharts
             option={this.getOption()}
@@ -278,15 +263,7 @@ class Home extends Component {
 
 
   componentDidMount() {
-    // let data = {
-    //     classname:"1701E",
-    //     classroom:4305,
-    //     assistant:"袁"
-    // }
-
-    // classAdd('/emstu/class/create',data).then(res=>{
-    //     console.log(res)
-    // })
+    
     this.classList();
   }
 }
