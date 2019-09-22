@@ -26,6 +26,7 @@ select{
 .tablebox{
     width:90%;
     position: relative;
+  
     height:auto;
     margin:10px auto;
     overflow-x: scroll;
@@ -33,16 +34,18 @@ select{
 }
 @media screen and (max-width: 414px) {
     .tablebox table{
-        width:800px;
+        padding:80px 0;
+        width:900px;
         height:100%;
-        
+        position: relative;
     }
 }
 @media screen and (min-width: 415px) {
     .tablebox  table{
-        width:100%;
+        padding:130px 0;
+        width:900px;
         height:100%;
-        
+        position: relative;
     }
 }
 .tablebox  table tbody tr{
@@ -50,19 +53,111 @@ select{
     height:40px;
     line-height:40px;
 }
-.tablebox  table tbody tr span{
+.tablebox  table tbody .delmark>span{
     margin:0 3px;
+    color:skyblue;
 }
 .mark{
-    position:absolute;
-    width:80%;
-    height:60%;
-    left:10%;
-    top:20%;
-    background:white;
+   
    display:none;
-    border:solid 1px #ccc;
+    
+}
+.show .close{
+    width:20px;
+    height:20px;
+    border:solid 1px red;
+    text-align: center;
+    line-height:20px;
+    border-radius:50%;
+    position: absolute;
+    right:-10px;
+    top:-10px;
 }
 .show{
-    display: block;
+    position: absolute;
+    z-index:2;
+    width:80%;
+    height:80%;
+    right:10%;
+    top:10%;
+    background:white;
+    border:solid 1px #ccc;
+}
+.show>p{
+    width:70%;
+    height:35px;
+    margin:5px auto;
+}
+.show>p>div{
+    margin-left:10px;
+    display:inline-block;
+    width:70%;
+    border:solid 1px #ccc;
+    height:35px;
+}
+.show>p>div>input{
+    margin-left:10px;
+    width:90%;
+    border:none;
+    padding-left:5px;
+    outline:0;
+    line-height:30px;
+}
+.show>p>span{
+    margin:0 10px;
+    border:solid 1px #ccc;
+    text-align:center;
+    line-height:30px;
+    padding:3px 6px;
+    
+}
+.show>p>.active{
+    color:skyblue;
+    border-color:skyblue;
+}
+.show>div{
+    width:70%;
+    height:auto;
+    margin:5px auto;
+    display: flex;
+    align-items:center;
+}
+
+.show>p>strong{
+    margin:0 10px;
+   background: #ccc;
+   border-radius:3px;
+    text-align:center;
+    line-height:30px;
+    padding:3px 6px;
+}
+.show>p>strong:nth-child(2){
+    background: skyblue
+}
+.delmark{
+    position: relative;
+}
+.dmark{
+    position: absolute;
+    width:90px;
+    height:40px;
+    right:10px;
+    top:0;
+    background:pink;
+   
+   
+}
+.dmark>span{
+    width:30px;
+    height:20px;
+    
+    background:#ccc;
+    color:#000;
+}
+.dmark>span:nth-child(2){
+    margin-left:10px;
+    background:skyblue;
+}
+.none{
+    display: none;
 }
