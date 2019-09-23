@@ -22,10 +22,24 @@ class Home extends Component {
         class_info: '34302,张三',
         create_time: '2019-08-23T07:12:12.000Z',
         tid: '9b1e295c-6ad1-4611-a546-47b14a6b4f69'
+      },
+      {
+        cid: 'b7e9e67a-8e51-4059-a3f8-5795e5f304b4',
+        class_name: '1704A',
+        class_info: '34301,张三',
+        create_time: '2019-08-23T08:11:50.000Z',
+        tid: '9b1e295c-6ad1-4611-a546-47b14a6b4f69'
+      },
+      {
+        cid: 'bea1d3ce-acc1-4dd2-baec-3c8388e3029f',
+        class_name: '1703D',
+        class_info: '34302,张三',
+        create_time: '2019-08-23T07:12:12.000Z',
+        tid: '9b1e295c-6ad1-4611-a546-47b14a6b4f69'
       }
     ],
     vility: false,
-    analysis:false
+    analysis: false
   };
 
   addClass() {
@@ -45,7 +59,7 @@ class Home extends Component {
   }
 
   // 添加分析
-  addAnalys(){
+  addAnalys() {
     this.setState({
       analysis: true
     });
@@ -154,7 +168,7 @@ class Home extends Component {
             data: [
               { type: 'max', name: '最高分' },
               { type: 'min', name: '最低分' }
-          ]
+            ]
           },
           markLine: {
             data: [
@@ -189,7 +203,7 @@ class Home extends Component {
   };
 
   render() {
-    let { lists, vility,analysis } = this.state;
+    let { lists, vility, analysis } = this.state;
 
     return (
       <div className={styles.homePage}>
@@ -197,47 +211,38 @@ class Home extends Component {
         <div className={styles.navbox}>
           <div className={styles.listClass}>
             <div className={styles.classLeft}>
-               <div className={styles.leftText}>
-                <span>切换班级:</span>
-               </div>
-               <div className={styles.leftList}>
-                <div className={styles.leftContent}>
-                  {lists &&
-                    lists.map(item => {
-                      return <span key={item.cid}>{item.class_name}</span>;
-                    })}
-                  <span onClick={this.addClass}>创建班级+</span>
-                </div>
-               </div>
+              <div className={styles.leftText}>
+                <span>选择班级:</span>
+              </div>
+              <div className={styles.leftList}>
+                {lists &&
+                  lists.map(item => {
+                    return <span key={item.cid}>{item.class_name}</span>;
+                  })}
+              </div>
             </div>
             <div className={styles.classRight}>
-              <div className={styles.grops}>
-                <div className={styles.gropLength}>
-                  <label className={styles.AndroidSwitch}>
-                    <input type="checkbox" />
-                    <span className={styles.CheckState}></span>
-                  </label>
-                </div>
-                <div className={styles.zhuxing}>
-                  <span className={styles.rechText}>柱形图/线图</span>
+              <div className={styles.rightOrder}>
+                <p>名单:</p>
+                <p>
+                  <span>张三，张立，王强</span>
+                  <span>3 / 人</span>
+                </p>
+              </div>
+              <div className={styles.rightXing}>
+                <div className={styles.grops}>
+                  <div className={styles.gropLength}>
+                    <label className={styles.AndroidSwitch}>
+                      <input type="checkbox" />
+                      <span className={styles.CheckState}></span>
+                    </label>
+                  </div>
+                  <div className={styles.zhuxing}>
+                    <span className={styles.rechText}>柱形图/线图</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.listNav}>
-          <div className={styles.listText}>
-            <p>
-              <span>添加学生+:</span>
-            </p>
-            <p>
-              <input type="text" placeholder="请输入姓名" />
-              <input type="text" placeholder="末位次数" />
-              <input type="text" placeholder="结对子，帮扶对象" />
-            </p>
-            <p>
-              <button>添加</button>
-            </p>
           </div>
         </div>
         <div className={styles.echartsBox}>
@@ -249,44 +254,37 @@ class Home extends Component {
         <div className={styles.jurpBox}>
           <div className={styles.contentText}>
             <div className={styles.contentLeft}>
-              <span onClick={this.addAchieve.bind(this)}>添加成绩+</span>
-              <span  onClick={this.addAnalys.bind(this)}>添加分析和解决方案+</span>
-               <span onClick={()=>{this.props.history.push('/dean')}}>院长视角</span>
+              <span>2019-08-30</span>
+              <span>今日分析及解决方案:</span>
+              <span>点击查看历史记录</span>
             </div>
             <div className={styles.contentRight}>
-              <span onClick={()=>{this.props.history.push('/table')}}>查看和编辑该生所有的成绩</span>
+              <span>
+                撒旦风格和上课睡觉觉空军开始撒旦风格和上课睡觉是申
+                觉空军开始撒旦风格和上课睡觉觉空军开始撒旦风格和上
+                课睡觉觉空军开始撒旦风格和上课睡觉觉空军开始撒旦风
+                格和上课睡觉觉空军开始撒旦风格和上课睡觉觉空军开始
+                课睡觉觉空军开始撒旦风格和上课睡觉觉空军开始撒旦风
+                格和上课睡觉觉空军开始撒旦风格和上课睡觉觉空军开始
+                课睡觉觉空军开始撒旦风格和上课睡觉觉空军开始撒旦风
+              </span>
             </div>
           </div>
         </div>
-        {vility && 
-            <Delog vilityFn={this.vilityFn.bind(this)} isVility="1"/>
-        }
-        {
-          analysis && <Delog vilityFn={this.vilityFn.bind(this)} isVility="2"/>
-        }
+        {vility && <Delog vilityFn={this.vilityFn.bind(this)} isVility="1" />}
+        {analysis && <Delog vilityFn={this.vilityFn.bind(this)} isVility="2" />}
       </div>
     );
   }
 
-
-  vilityFn(staus){
+  vilityFn(staus) {
     this.setState({
-      vility:staus,
-      analysis:staus
-    })
+      vility: staus,
+      analysis: staus
+    });
   }
 
-
   componentDidMount() {
-    // let data = {
-    //     classname:"1701E",
-    //     classroom:4305,
-    //     assistant:"袁"
-    // }
-
-    // classAdd('/emstu/class/create',data).then(res=>{
-    //     console.log(res)
-    // })
     this.classList();
   }
 }

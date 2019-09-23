@@ -18,7 +18,23 @@
 }
 
 @media screen and (max-width: 375.2px) {
+  html {
+    font-size: calc(100/375*100vw);
+  }
   .header {
+    width: 100%;
+    height: 1rem;
+    color: white;
+    background-color: #0076ff;
+    font-size: 0.2rem;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    line-height: 100px;
+    font-weight: normal;
+    font-style: normal;
+  }
+  .header p {
     width: 100%;
   }
 }
